@@ -1,0 +1,31 @@
+<h1>Olha todo mundo! <3</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quem é?</th>
+      <th>Estreou na vida dia</th>
+      <th>Email</th>
+      <th>Facebook</th>
+      <th>Instagram</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.birthday %></td>
+      <td><%= user.email %></td>
+      <td><%= user.facebook %></td>
+      <td><%= user.instagram %></td>
+      <td>
+        <span><%= link "Ver", to: Routes.user_path(@conn, :show, user) %></span>
+        <span><%= link "Editar", to: Routes.user_path(@conn, :edit, user) %></span>
+        <span><%= link "Apagar", to: Routes.user_path(@conn, :delete, user), method: :delete, data: [confirm: "Tem certeza?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+

@@ -2,8 +2,8 @@ use Mix.Config
 
 # Configure your database
 config :stay_in_touch, StayInTouch.Repo,
-  username: "postgres",
-  password: "postgres",
+  username: "backend_dev",
+  password: "backend_dev",
   database: "stay_in_touch_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

@@ -1,0 +1,45 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, Alguma coisa deu errada ao salvar os dados.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :name, "Quem é você?"%>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :birthday, "Estreou nos palcos da vida quando?" %>
+  <%= date_select f, :birthday %>
+  <%= error_tag f, :birthday %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+
+  <%= label f, :facebook %>
+  <%= text_input f, :facebook %>
+  <%= error_tag f, :facebook %>
+
+  <%= label f, :instagram %>
+  <%= text_input f, :instagram %>
+  <%= error_tag f, :instagram %>
+
+  <%= label f, :bio %>
+  <%= text_input f, :bio %>
+  <%= error_tag f, :bio %>
+
+  <%= label f, :avatar %>
+  <%= text_input f, :avatar %>
+  <%= error_tag f, :avatar %>
+
+  <hr>
+
+  <%= label f, :password, "Senha" %>
+  <%= text_input f, :password %>
+  <%= error_tag f, :password %>
+
+  <div>
+    <%= submit "Salvar" %>
+  </div>
+<% end %>
