@@ -1,5 +1,4 @@
-<h1>Cadastra-se</h1>
+<h1>Cadastre-se</h1>
 
 <%= render "form.html", Map.put(assigns, :action, Routes.user_path(@conn, :create)) %>
 
-<span><%= link "Voltar", to: Routes.user_path(@conn, :index) %></span>

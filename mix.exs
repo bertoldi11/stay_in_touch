@@ -50,6 +50,8 @@ defmodule StayInTouch.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:excoveralls, "~> 0.10", only: :test},
+      {:comeonin, "~> 5.0"},
+      {:bcrypt_elixir, "~> 2.0"},
       {:plug_cowboy, "~> 2.0"}
     ]
   end

@@ -3,12 +3,12 @@ defmodule StayInTouch.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :name, :string
+      add :name, :string, null: false
       add :birthday, :date
-      add :email, :string
+      add :email, :string, null: false
       add :facebook, :string
       add :instagram, :string
-      add :password, :string
+      add :encrypted_password, :string, null: false
       add :bio, :string
       add :avatar, :string
 
