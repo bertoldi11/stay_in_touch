@@ -11,12 +11,20 @@
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><%= link "Cadastre-se", to: Routes.user_path(@conn, :new) %></li>
-          </ul>
-        </nav>
         <h1>Stay in Touch</h1>
+        <nav role="navigation">
+          <%= if signed_in?(@conn) do %>
+            <ul>
+              <li><%= link "Meu perfil", to: Routes.user_path(@conn, :edit, "2") %></li>
+              <li><%= link "Sair", to: Routes.session_path(@conn, :delete) %></li>
+            </ul>
+          <% else %>
+            <ul>
+              <li><%= link "Cadastre-se", to: Routes.user_path(@conn, :new) %></li>
+              <li><%= link "Entrar", to: Routes.session_path(@conn, :new) %></li>
+            </ul>
+          <% end %>
+        </nav>
       </section>
     </header>
     <main role="main" class="container">

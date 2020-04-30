@@ -13,7 +13,7 @@
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
-  <%= if false do %>
+  <%= if signed_in?(@conn) do %>
     <%= label f, :birthday, "Estreou nos palcos da vida quando?" %>
     <%= date_select f, :birthday %>
     <%= error_tag f, :birthday %>

@@ -38,7 +38,7 @@ defmodule StayInTouchWeb do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
-
+      import StayInTouch.Accounts.Auth, only: [signed_in?: 1]
       import StayInTouchWeb.ErrorHelpers
       import StayInTouchWeb.Gettext
       alias StayInTouchWeb.Router.Helpers, as: Routes

@@ -38,6 +38,19 @@ defmodule StayInTouch.Accounts do
   def get_user!(id), do: Repo.get!(User, id)
 
   @doc """
+  Gets a single user by email
+
+  ## Examples
+      iex> get_user_by_email("user@gmail.com")
+      %User{}
+
+      iex> get_user_by_email("non_exist@gmail.com")
+      nil
+
+  """
+  def get_user_by_email(email), do: Repo.get_by(User, email: email)
+
+  @doc """
   Creates a user.
 
   ## Examples
