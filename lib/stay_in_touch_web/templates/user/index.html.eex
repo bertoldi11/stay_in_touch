@@ -3,7 +3,7 @@
 <section style="display: flex; flex-wrap: wrap; justify-content: space-between;">
   <%= for user <- @users do %>
     <div class="users-card">
-      <image class="image" src="https://saudeemeulugar.com/avatar/319">
+      <image class="image" src=<%= StayInTouchWeb.LayoutView.get_gravatar_url(user.email) %>>
       <h2 class="title"><%= user.name %></h2>
       <div class="action"> 
         <%= link "Ver", to: Routes.user_path(@conn, :show, user) %>

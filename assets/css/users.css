@@ -40,6 +40,7 @@
 .user-section > .header > .image {
   width: 240px;
   height: 240px;
+  border-radius: 15px;
 }
 
 .user-section > .header > .title {

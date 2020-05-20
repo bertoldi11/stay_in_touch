@@ -1,7 +1,6 @@
 <div class="user-section">
   <div class="header">
-    <%= @user.avatar %>
-    <image class="image" src="https://saudeemeulugar.com/avatar/319">
+    <image class="image" src=<%= StayInTouchWeb.LayoutView.get_gravatar_url(@user.email, 250) %>>
     <h2 class="title"><%= @user.name %></h2>
   </div>
 
