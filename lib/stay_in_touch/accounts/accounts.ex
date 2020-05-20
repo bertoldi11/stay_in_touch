@@ -18,7 +18,7 @@ defmodule StayInTouch.Accounts do
 
   """
   def list_users do
-    Repo.all(User)
+    Repo.all(from(u in User, order_by: u.name))
   end
 
   @doc """

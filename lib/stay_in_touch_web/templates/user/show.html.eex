@@ -1,43 +1,36 @@
-<h1>Veja os detalhes de contato de: <%= @user.name %> </h1>
-
-<ul>
-
-  <li>
-    <strong>Nome:</strong>
-    <%= @user.name %>
-  </li>
-
-  <li>
-    <strong>Aniversário:</strong>
-    <%= @user.birthday %>
-  </li>
-
-  <li>
-    <strong>Email:</strong>
-    <%= @user.email %>
-  </li>
-
-  <li>
-    <strong>Facebook:</strong>
-    <%= @user.facebook %>
-  </li>
-
-  <li>
-    <strong>Instagram:</strong>
-    <%= @user.instagram %>
-  </li>
-
-  <li>
-    <strong>Bio:</strong>
-    <%= @user.bio %>
-  </li>
-
-  <li>
-    <strong>Avatar:</strong>
+<div class="user-section">
+  <div class="header">
     <%= @user.avatar %>
-  </li>
+    <image class="image" src="https://saudeemeulugar.com/avatar/319">
+    <h2 class="title"><%= @user.name %></h2>
+  </div>
 
-</ul>
+  <div class="body">
+    <p>
+      <strong>Bio:</strong>
+      <%= @user.bio %>
+    </p>
 
-<span><%= link "Editar", to: Routes.user_path(@conn, :edit, @user) %></span>
+    <p>
+      <strong>Aniversário:</strong>
+      <%= @user.birthday %>
+    </p>
+
+    <p>
+      <strong>Email:</strong>
+      <%= @user.email %>
+    </p>
+
+    <p>
+      <strong>Facebook:</strong>
+      <%= @user.facebook %>
+    </p>
+
+    <p>
+      <strong>Instagram:</strong>
+      <%= @user.instagram %>
+    </p>
+  </div>
+</div>
+
 <span><%= link "Voltar", to: Routes.user_path(@conn, :index) %></span>
