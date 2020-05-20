@@ -1,5 +1,6 @@
 defmodule StayInTouchWeb.Router do
   use StayInTouchWeb, :router
+  alias StayInTouch.Plugs.{Guest, Auth}
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,11 +15,18 @@ defmodule StayInTouchWeb.Router do
   end
 
   scope "/", StayInTouchWeb do
-    pipe_through :browser
+    pipe_through [:browser, Guest]
 
     get "/", PageController, :index
-    resources "/users", UserController
+    resources "/users", UserController, only: [:new, :create]
     resources "/session", SessionController, only: [:new, :create]
+  end
+
+  scope "/", StayInTouchWeb do
+    pipe_through [:browser, Auth]
+
+    resources "/session", SessionController, only: [:delete]
+    resources "/users", UserController, except: [:new, :create]
   end
 
   # Other scopes may use custom stacks.

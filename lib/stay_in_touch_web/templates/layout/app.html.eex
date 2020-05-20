@@ -16,7 +16,7 @@
           <%= if signed_in?(@conn) do %>
             <ul>
               <li><%= link "Meu perfil", to: Routes.user_path(@conn, :edit, "2") %></li>
-              <li><%= link "Sair", to: Routes.session_path(@conn, :delete) %></li>
+              <li><%= link "Sair", to: Routes.session_path(@conn, :delete, "2"), method: :delete %></li>
             </ul>
           <% else %>
             <ul>

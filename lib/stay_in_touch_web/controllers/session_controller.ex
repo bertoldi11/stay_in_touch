@@ -26,5 +26,9 @@ defmodule StayInTouchWeb.SessionController do
   end
 
   def delete(conn, _params) do
+    conn
+    |> delete_session(:current_user_id)
+    |> put_flash(:info, "Você saiu!")
+    |> redirect(to: Routes.page_path(conn, :index))
   end
 end

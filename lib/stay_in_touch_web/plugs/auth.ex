@@ -12,7 +12,7 @@ defmodule StayInTouch.Plugs.Auth do
       assign(conn, :current_user, current_user)
     else
       conn
-      |> redirect(to: Routes.session_path(@conn, :new))
+      |> redirect(to: StayInTouchWeb.Router.Helpers.session_path(conn, :new))
       |> halt
     end
   end
