@@ -20,7 +20,7 @@ defmodule StayInTouchWeb.UserController do
         conn
         |> put_session(:current_user_id, user.id)
         |> put_flash(:info, "Usuário registrado. Bem vindx!")
-        |> redirect(to: Routes.page_path(conn, :show))
+        |> redirect(to: Routes.page_path(conn, :index))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
