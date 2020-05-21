@@ -15,8 +15,9 @@
 
   <%= if signed_in?(@conn) do %>
     <%= label f, :birthday, "Estreou nos palcos da vida quando?" %>
-    <%= date_select f, :birthday %>
-    <%= error_tag f, :birthday %>
+    <%= date_select f, :birthday, builder: fn b -> %>
+      <%= b.(:day, []) %> de <%= b.(:month, []) %> de <%= b.(:year, [options: 1960..2020]) %>
+    <% end %> <%= error_tag f, :birthday %>
 
     <%= label f, :facebook %>
     <%= text_input f, :facebook %>
@@ -27,12 +28,8 @@
     <%= error_tag f, :instagram %>
 
     <%= label f, :bio %>
-    <%= text_input f, :bio %>
+    <%= textarea f, :bio %>
     <%= error_tag f, :bio %>
-
-    <%= label f, :avatar %>
-    <%= text_input f, :avatar %>
-    <%= error_tag f, :avatar %>
   <% end %>
 
   <hr>
