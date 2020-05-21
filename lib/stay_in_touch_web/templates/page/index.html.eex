@@ -1,4 +1,4 @@
-<section class="phx-hero">
+<section class="jumbotron">
   <h2>Olá. Melhor turma do ensino médio da vida!</h2>
-  <p>A ideia é mantermos informações atualizadas dos nossos contatos</p>
+  <p class="lead">A ideia é mantermos informações atualizadas dos nossos contatos</p>
 </section>

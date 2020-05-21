@@ -6,17 +6,21 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
 
 
-  <%= label f, :password, "Senha" %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
+  <div class="form-group">
+    <%= label f, :password, "Senha" %>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
 
-  <div style="display: flex; justify-content: space-between;">
-    <%= submit "Entrar" %>
+  <div class="d-flex">
+    <%= submit "Entrar", class: "btn btn-primary" %>
     <span><%= link "Voltar", to: Routes.user_path(@conn, :index) %></span>
   </div>
 <% end %>

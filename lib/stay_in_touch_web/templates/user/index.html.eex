@@ -1,15 +1,17 @@
 <h1>Olha todo mundo! <3</h1>
 
-<section style="display: flex; flex-wrap: wrap; justify-content: space-between;">
+<section class="d-flex flex-wrap justify-content-between">
   <%= for user <- @users do %>
-    <div class="users-card">
-      <image class="image" src=<%= StayInTouchWeb.LayoutView.get_gravatar_url(user.email) %>>
-      <h2 class="title"><%= user.name %></h2>
-      <div class="action"> 
-        <%= link "Ver", to: Routes.user_path(@conn, :show, user) %>
-        <%= if StayInTouchWeb.LayoutView.get_user_id(@conn) == user.id do %>
-          <%= link "Editar", to: Routes.user_path(@conn, :edit, user) %>
-        <% end %>
+    <div class="card" style="width: 33%; margin-bottom: 10px;">
+      <img src=<%= StayInTouchWeb.LayoutView.get_gravatar_url(user.email) %> class="card-img-top" alt="Avatar">
+      <div class="card-body">
+        <h5 class="card-title"><%= user.name %></h5>
+        <div class="d-flex justify-content-between align-items-end">
+          <%= link "Ver", to: Routes.user_path(@conn, :show, user), class: "btn btn-primary" %>
+          <%= if StayInTouchWeb.LayoutView.get_user_id(@conn) == user.id do %>
+            <%= link "Editar", to: Routes.user_path(@conn, :edit, user) %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

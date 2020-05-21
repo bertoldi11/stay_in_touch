@@ -13,6 +13,7 @@
 
 .users-card > .image {
   margin-bottom: 2rem;
+  max-width: 200px;
 }
 
 .users-card > .title {

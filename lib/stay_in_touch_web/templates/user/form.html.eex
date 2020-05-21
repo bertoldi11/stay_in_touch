@@ -4,46 +4,76 @@
       <p>Oops, Alguma coisa deu errada ao salvar os dados.</p>
     </div>
   <% end %>
+  <div class="form-group">
+    <%= label f, :name, "Seu nome"%>
+    <%= text_input f, :name, class: "form-control" %>
+    <%= error_tag f, :name %>
+  </div>
 
-  <%= label f, :name, "Seu nome"%>
-  <%= text_input f, :name %>
-  <%= error_tag f, :name %>
-
-  <%= label f, :email %>
-  <%= text_input f, :email %>
-  <%= error_tag f, :email %>
+  <div class="form-group">
+    <%= label f, :email %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
 
   <%= if signed_in?(@conn) do %>
-    <%= label f, :birthday, "Estreou nos palcos da vida quando?" %>
-    <%= date_select f, :birthday, builder: fn b -> %>
-      <%= b.(:day, []) %> de <%= b.(:month, []) %> de <%= b.(:year, [options: 1960..2020]) %>
-    <% end %> <%= error_tag f, :birthday %>
+    <div class="form-group">
+      <%= label f, :birthday, "Estreou nos palcos da vida quando?" %>
+      <%= date_select f, :birthday, builder: fn b -> %>
+        <div class="form-controle">
+          <%= b.(:day, []) %> de <%= b.(:month, []) %> de <%= b.(:year, [options: 1960..2020]) %>
+        </div>
+      <% end %>
+      <%= error_tag f, :birthday %>
+    </div>
 
-    <%= label f, :facebook %>
-    <%= text_input f, :facebook %>
-    <%= error_tag f, :facebook %>
+    <div class="form-group">
+      <%= label f, :bio %>
+      <%= textarea f, :bio, class: "form-control"  %>
+      <%= error_tag f, :bio %>
+    </div>
 
-    <%= label f, :instagram %>
-    <%= text_input f, :instagram %>
-    <%= error_tag f, :instagram %>
+    <div class="form-group">
+      <%= label f, :facebook %>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">facebook.com/</span>
+        </div>
+        <%= text_input f, :facebook, class: "form-control" %>
+      </div>
+      <%= error_tag f, :facebook %>
+    </div>
 
-    <%= label f, :bio %>
-    <%= textarea f, :bio %>
-    <%= error_tag f, :bio %>
+    <div class="form-group">
+      <%= label f, :instagram %>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon3">instagram.com/</span>
+        </div>
+        <%= text_input f, :instagram, class: "form-control" %>
+      </div>
+      <%= error_tag f, :instagram %>
+    </div>
   <% end %>
 
   <hr>
 
-  <%= label f, :password, "Senha" %>
-  <%= password_input f, :password %>
-  <%= error_tag f, :password %>
+  <div class="form-group">
+    <%= label f, :password, "Senha" %>
+    <%= password_input f, :password, class: "form-control" %>
+    <%= error_tag f, :password %>
+  </div>
 
-  <%= label f, :password_confirmation, "Confirme a senha" %>
-  <%= password_input f, :password_confirmation %>
-  <%= error_tag f, :password_confirmation %>
+  <div class="form-group">
+    <%= label f, :password_confirmation, "Confirme a senha" %>
+    <%= password_input f, :password_confirmation, class: "form-control" %>
+    <%= error_tag f, :password_confirmation %>
+  </div>
 
-  <div style="display: flex; justify-content: space-between;">
-    <%= submit "Salvar" %>
+  <br />
+
+  <div style="d-flex">
+    <%= submit "Salvar", class: "btn btn-primary" %>
     <span><%= link "Voltar", to: Routes.user_path(@conn, :index) %></span>
   </div>
 <% end %>

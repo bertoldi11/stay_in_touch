@@ -5,33 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= assigns[:page_title] || "StayInTouch · Gerencie os contatos daquela turma inesquecível." %></title>
+    <link 
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous" />
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>
     <%= csrf_meta_tag() %>
   </head>
   <body>
-    <header>
-      <section class="container">
-        <h1>Stay in Touch</h1>
-        <nav role="navigation">
-          <%= if signed_in?(@conn) do %>
-            <ul>
-              <li><%= link "Meu perfil", to: Routes.user_path(@conn, :edit, "2") %></li>
-              <li><%= link "Sair", to: Routes.session_path(@conn, :delete, "2"), method: :delete %></li>
-            </ul>
-          <% else %>
-            <ul>
-              <li><%= link "Cadastre-se", to: Routes.user_path(@conn, :new) %></li>
-              <li><%= link "Entrar", to: Routes.session_path(@conn, :new) %></li>
-            </ul>
-          <% end %>
-        </nav>
-      </section>
+    <header class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Stay in Touch</a>
+        <button 
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+          <div class="navbar-nav">
+            <%= if signed_in?(@conn) do %>
+              <%= link "Meu perfil", to: Routes.user_path(@conn, :edit, @current_user), class: "nav-item nav-link" %>
+              <%= link "Sair", to: Routes.session_path(@conn, :delete, @current_user), method: :delete, class: "nav-item nav-link"%>
+            <% else %>
+              <%= link "Cadastre-se", to: Routes.user_path(@conn, :new), class: "nav-item nav-link" %>
+              <%= link "Entrar", to: Routes.session_path(@conn, :new), class: "nav-item nav-link"%>
+            <% end %>
+          </div>
+        </div>
+      </nav>
     </header>
     <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <%= if get_flash(@conn, :info) do %>
+        <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+      <% end %>
+      <%= if get_flash(@conn, :error) do %>
+        <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+      <% end %>
       <%= render @view_module, @view_template, assigns %>
     </main>
     <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script 
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"></script>
+
   </body>
 </html>
